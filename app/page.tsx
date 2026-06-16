@@ -25,7 +25,7 @@ import {
 import { FeatureCard, GlassCard, GradientButton, IconBadge, ImageCard, Section, SectionHeader } from "@/components/ui";
 import { Lift, Reveal, ScrollProgress } from "@/components/motion";
 
-const asset = (name: string) => `/images/${name}`;
+const asset = (name: string) => `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/${name}`;
 
 const stats = [
   { value: "01", label: "뷰티 정보 집중" },
@@ -99,7 +99,7 @@ const appScreens = [
   "imgi_48_sec5-slide_05.png"
 ];
 
-const process = [
+const consultationSteps = [
   {
     icon: Camera,
     title: "사진 첨부",
@@ -496,7 +496,7 @@ function ConsultationSection() {
             </div>
           </div>
           <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-            {process.map((item, index) => (
+            {consultationSteps.map((item, index) => (
               <GlassCard key={item.title} delay={index * 0.08} className="bg-white/76">
                 <div className="flex items-start gap-4">
                   <IconBadge icon={item.icon} />
