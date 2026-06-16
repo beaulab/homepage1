@@ -1,0 +1,19 @@
+node_modules/
+.next/
+out/
+build/
+
+.env*
+!.env.example
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+dev-server.log
+dev-server.err.log
+.dev-port
+.idea/
+
+뷰랩 - 오직 뷰티만을 연구합니다_/
