@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import type { ReactNode, SVGProps } from "react";
 import {
   ArrowUpRight,
   Building2,
@@ -9,9 +10,7 @@ import {
   CirclePlay,
   Download,
   ExternalLink,
-  Heart,
   Menu,
-  MoveRight,
   Search,
   ShieldCheck,
   Sparkles
@@ -437,19 +436,102 @@ function ContactSection() {
   );
 }
 
+function FacebookIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M14.2 8.35V6.9c0-.7.46-.86.78-.86h2V3.1L14.23 3.08c-3.05 0-3.74 2.28-3.74 3.74v1.53H8.52v3h1.97V21h3.3v-9.65h2.73l.36-3h-2.68Z" />
+    </svg>
+  );
+}
+
+function InstagramIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <rect width="15.5" height="15.5" x="4.25" y="4.25" rx="4.2" stroke="currentColor" strokeWidth="2" />
+      <circle cx="12" cy="12" r="3.6" stroke="currentColor" strokeWidth="2" />
+      <circle cx="16.8" cy="7.2" r="1.1" fill="currentColor" />
+    </svg>
+  );
+}
+
+function YouTubeIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M21.2 7.65a3 3 0 0 0-2.12-2.12C17.2 5 12 5 12 5s-5.2 0-7.08.53A3 3 0 0 0 2.8 7.65 31.3 31.3 0 0 0 2.28 12c0 1.47.18 2.93.52 4.35a3 3 0 0 0 2.12 2.12C6.8 19 12 19 12 19s5.2 0 7.08-.53a3 3 0 0 0 2.12-2.12c.34-1.42.52-2.88.52-4.35 0-1.47-.18-2.93-.52-4.35ZM10.05 15.02V8.98L15.38 12l-5.33 3.02Z" />
+    </svg>
+  );
+}
+
+function SocialButton({
+  href,
+  label,
+  children
+}: {
+  href: string;
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      aria-label={label}
+      className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-zinc-300 text-white transition hover:bg-[var(--brand-pink)] focus:outline-none focus:ring-4 focus:ring-pink-100"
+    >
+      {children}
+    </a>
+  );
+}
+
 function Footer() {
   return (
-    <footer className="border-t border-zinc-200 bg-white px-5 py-8">
-      <div className="mx-auto flex max-w-7xl flex-col gap-4 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
-        <span className="inline-flex items-center gap-2 font-black text-zinc-950">
-          <Heart className="h-4 w-4 fill-[var(--brand-pink)] text-[var(--brand-pink)]" aria-hidden="true" />
-          BEAULAB
-        </span>
-        <span>© BEAULAB. All rights reserved.</span>
-        <a href="#home" className="inline-flex items-center gap-2 font-semibold text-zinc-950">
-          TOP
-          <MoveRight className="h-4 w-4 -rotate-90" aria-hidden="true" />
-        </a>
+    <footer id="footer" className="border-t border-zinc-200 bg-white px-5 py-12 sm:py-14">
+      <div className="mx-auto max-w-7xl">
+        <Image src={asset("imgi_1_logo.png")} alt="BEAULAB" width={150} height={31} />
+
+        <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div>
+            <h2 className="text-xl font-black text-zinc-950">뷰랩</h2>
+            <p className="mt-4 text-sm leading-7 text-zinc-500">오직 뷰티만을 연구합니다.</p>
+
+            <address className="mt-7 not-italic text-sm leading-8 text-zinc-500">
+              <p>사업자등록번호 : 정보 입력 필요</p>
+              <p>주소 : 정보 입력 필요</p>
+              <p>
+                Fax : 정보 입력 필요 <span className="mx-2 text-zinc-300">|</span>
+                <a href="mailto:contact@beaulab.co.kr" className="transition hover:text-[var(--brand-pink)]">
+                  contact@beaulab.co.kr
+                </a>
+              </p>
+            </address>
+
+            <nav className="mt-7 flex flex-wrap gap-x-8 gap-y-3 text-sm font-black text-zinc-950" aria-label="Footer">
+              <a href="#" className="transition hover:text-[var(--brand-pink)]">
+                개인정보 처리방침
+              </a>
+              <a href="#" className="transition hover:text-[var(--brand-pink)]">
+                서비스 이용약관
+              </a>
+              <a href="#contact" className="transition hover:text-[var(--brand-pink)]">
+                제휴 문의
+              </a>
+            </nav>
+          </div>
+
+          <div className="flex gap-3 lg:justify-end">
+            <SocialButton href="#" label="Facebook">
+              <FacebookIcon className="h-5 w-5" />
+            </SocialButton>
+            <SocialButton href="#" label="Instagram">
+              <InstagramIcon className="h-5 w-5" />
+            </SocialButton>
+            <SocialButton href="#" label="YouTube">
+              <YouTubeIcon className="h-5 w-5" />
+            </SocialButton>
+            <SocialButton href="#" label="Blog">
+              <span className="text-sm font-black">B</span>
+            </SocialButton>
+          </div>
+        </div>
       </div>
     </footer>
   );
