@@ -19,6 +19,7 @@ import {
 import { Lift, Reveal, ScrollProgress } from "@/components/motion";
 
 const asset = (name: string) => `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/${name}`;
+const media = (name: string) => `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/videos/${name}`;
 
 const navItems = [
   { href: "#film", label: "Film" },
@@ -119,14 +120,21 @@ function Hero() {
   return (
     <section id="home" className="relative min-h-screen overflow-hidden bg-zinc-950 text-white">
       <div id="film" className="absolute inset-0">
-        <Image
-          src={asset("imgi_2_ms1.jpg")}
-          alt="BEAULAB brand film poster"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[67%_center]"
-        />
+        <video
+          className="absolute inset-0 h-full w-full object-cover object-center"
+          poster={asset("imgi_2_ms1.jpg")}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-label="BEAULAB brand film"
+          onCanPlay={(event) => {
+            event.currentTarget.play().catch(() => undefined);
+          }}
+        >
+          <source src={media("270065_medium.mp4")} type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_34%,rgba(255,47,145,0.18),transparent_36%),linear-gradient(90deg,rgba(9,9,11,0.86),rgba(9,9,11,0.48)_48%,rgba(9,9,11,0.16))]" />
         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent" />
         <div className="film-grain absolute inset-0 opacity-50" />
