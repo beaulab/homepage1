@@ -121,7 +121,6 @@ function Hero() {
       <div id="film" className="absolute inset-0">
         <video
           className="absolute inset-0 h-full w-full object-cover object-center"
-          poster={asset("imgi_2_ms1.jpg")}
           autoPlay
           muted
           loop
